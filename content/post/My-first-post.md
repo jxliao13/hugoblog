@@ -4,7 +4,7 @@ date: 2019-04-16T21:41:54+08:00
 draft: "false"
 ---
 
-####緣起
+## 緣起histman
 
 花了一個小時用hugo在windows建立起來，預計要把靜態的網頁掛在github上，正式對外使用。
 

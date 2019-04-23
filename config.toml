@@ -1,153 +1,129 @@
-# Set base URL for site - should end with a trailing slash
-baseUrl = "https://jxliao13.github.io/"
-
-theme = "slick"
-
-# Site title (not shown if commented out or set to false)
-# (If you disable this, add some link on the index page inside menu.main,
-#  otherwise your visitors will get confused and lost...)
+baseURL = "https://jxliao13.github.io/"
 title = "Ljc13"
+# for smart copyright line, leave this blank and check [params.copyright]
+copyright = ""
 
-languageCode = "en"
-defaultContentLanguage = "en-us"
+theme = "engimo"
 
-# Will appear below the footer links with a © sign and the current year
-copyright = "Some Author — All rights reserved."
+disqusShortname = ""
+googleAnalytics = ""
 
-
-pygmentsCodefences = true               # Enable highlighting inside codefences
-pygmentsCodeFencesGuessSyntax = true    # Highlight code without language tag
-pygmentsUseClasses = true               # Use external style sheet
-pygmentsUseClassic = false              # Force use of chroma
-
-canonifyURLs = true
+Paginate = 5
 preserveTaxonomyNames = true
 
-# Configure pagination
-paginate = 10
-paginatePath = "page"
+enableRobotsTXT = true # generate robots.txt
 
-[params]
-    # Site subtitle (not shown if commented out or set to false)
-    subtitle = "Just another site"
+# Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
+pygmentsCodefences = true
 
-    # Site description
-    description = "Example site for Slick Hugo theme"
+enableEmoji = true
 
-    # Favicon file (relative to baseURL - place below static folder)
-    favicon = "favicon.png"
-    # Custom css file (relative to baseURL - place below static folder)
-    css = "custom.css"
+# Missing translations will default to this content language
+defaultContentLanguage = "en"
 
-    # Define formatting of dates
-    # (optional, falls back to RFC822 format if not set)
-    # For reference to date and time formatting, see:
-    # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
-    # Make sure to set showMetaDates to true to see any dates
-    dateFmt = "Mon, 02 Jan 2006 15:04:05 MST"
+[params.info]
+description = "Minimalist Hugo theme for Engineers"
+title404 = "Nothing's here!"
 
-    # Customize the text of the 404 page here
-    errorPageText = "There's nothing to see here, please move along!"
+[params.assets]
 
-    # Header with title/subtitle can be disabled here.
-    # (If you disable this, add some link on the index page inside menu.main,
-    #  otherwise your visitors will get confused and lost...)
-    showNavHeader = true
+favicon = "favicon.ico"
+customCSS = ["css/custom.css"]
+customJS = ["js/custom.js"]
+gopher = "" # used in 404 template ( Generator: https://gopherize.me )
 
-    # Decide if only summaries are shown on the main page or the full content
-    showFullContent = true
+[params.copyright]
+prefix = ""
+holder = "achary"
+startYear = "2017"
+suffix = ""
 
-    # If false no pagination is shown when there is nothing to paginate
-    showEmptyPagination = true
+[params.settings]
+# date & time format: https://golang.org/pkg/time/
+dateFormat = "2006, Jan 02"
+listDateFormat = "2006, Jan 02"
+archiveDateFormat = "Jan 02"
+hideEntryNavigation = ["page"] # boolean / array of sections
+showReadingTime = true
+taxonomyCloudShuffle = false
+accentColor = "#44ccff"
+hideMainMenu = false
 
-    # If false the dates for the posts are not shown
-    showMetaDates = true
+[params.sidebar]
+enable = true
 
-    # If false the taxonomy links for the posts are not shown
-    showMetaLinks = true
+[params.widgets]
+homepage = ["recent_posts"]
+sidebar = ["about","search","sidebar_menu","taxonomy_cloud"]
+footer = ["social_menu"]
 
-    # Uses Hugo internal templates if set
-    opengraph = false
-    schema = false
-    twitter_cards = false
+[params.opengraph.facebook]
+admins = [] # array of Facebook IDs
+appID = ""
+pageID = ""
 
+[params.opengraph.twitter]
+page = "" # Twitter page username
 
-# Define all supported taxonomies (add series to the default)
+[params.seo]
+# Title Separator: - – — · • * ⋆ | ~ « » < >
+titleSeparator = "•"
+
+[params.social]
+email = "contact@example.com"
+github = "achary"
+
+[params.comments]
+enable = false
+
+[params.comments.staticman]
+enable = true
+apiEndpoint = "https://api.staticman.net/v2/entry"
+maxDepth = 2
+
+[params.comments.staticman.github]
+username = "achary"
+repository = "engimo"
+branch = "master"
+
+# Utterances: https://utteranc.es
+[params.comments.utterances]
+enable = false
+issueTerm = "pathname" # pathname / url / title
+
+[params.comments.utterances.github]
+username = "achary"
+repository = "engimo"
+
+[params.search]
+client = "fuse" # algolia / fuse / lunr
+
+[params.search.algolia]
+appId = ""
+indexName = ""
+searchApiKey = ""
+
 [taxonomies]
-    tags = "tags"
-    categories = "categories"
-    series = "series"
+author = "authors"
+category = "categories"
+series = "series"
+tag = "tags"
 
+[permalinks]
+page = "/:slug/"
 
-[author]
-    name = "jxliao"
-    email = "ljcsrr@gmail.com"
+[[menu.main]]
+name = "Repo"
+weight = -10
+identifier = "repository"
+url = "https://github.com/achary/engimo"
 
+[blackfriday]
+hrefTargetBlank = true
 
-[menu]
-
-    # Configure main menu entries (header)
-    # Currently set to list all taxonomies and posts
-    [[menu.main]]
-        identifier = "post"
-        name = "Posts"
-        title = "All posts"
-        url = "/posts/"
-        weight = 1
-
-    [[menu.main]]
-        identifier = "categories"
-        name = "Categories"
-        title = "All categories"
-        url = "/categories/"
-        weight = 2
-
-    [[menu.main]]
-        identifier = "tags"
-        name = "Tags"
-        title = "All tags"
-        url = "/tags/"
-        weight = 2
-
-    [[menu.main]]
-        identifier = "series"
-        name = "Series"
-        title = "All series"
-        url = "/series/"
-        weight = 2
-
-
-    # Define the entries for post metadata
-    # Identifiers should match with the taxonomy entries
-    [[menu.meta]]
-        identifier = "categories"
-        name = "Categories"
-        weight = 1
-    [[menu.meta]]
-        identifier = "series"
-        name = "Series"
-        weight = 2
-    [[menu.meta]]
-        identifier = "tags"
-        name = "Tags"
-        weight = 3
-
-
-    # Add some footer links to your likings
-    [[menu.footer]]
-        name = "GitHub"
-        title = "Theme repository"
-        url = "https://github.com/spookey/slick"
-        weight = 1
-
-    [[menu.footer]]
-        name = "Slick"
-        title = "Theme page on gohugo.io"
-        url = "https://themes.gohugo.io/slick"
-        weight = 2
-
-    [[menu.footer]]
-        name = "Toor"
-        title = "Some website, using this theme"
-        url = "https://www.toor.su"
-        weight = 3
+[languages]
+# edit this block for your own language
+[languages.en]
+lang = "en"
+languageName = "English"
+weight = 1
